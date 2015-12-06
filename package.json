@@ -1,0 +1,19 @@
+{
+  "name": "jsgif",
+  "version": "1.0.0",
+  "description": "Pure JavaScript HTML5 <canvas> to (Animated) GIF Conversion\r ===========================================================",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlicanC/jsgif.git"
+  },
+  "author": "Alican Çubukçuoğlu <alicancubukcuoglu@gmail.com> (https://github.com/AlicanC)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlicanC/jsgif/issues"
+  },
+  "homepage": "https://github.com/AlicanC/jsgif#readme"
+}

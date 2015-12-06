@@ -1,7 +1,7 @@
 <script src="./b64.js"></script>
-<script src="../LZWEncoder.js"></script>
-<script src="../NeuQuant.js"></script>
-<script src="../GIFEncoder.js"></script>
+<script src="../lib/LZWEncoder.js"></script>
+<script src="../lib/NeuQuant.js"></script>
+<script src="../lib/GIFEncoder.js"></script>
 <canvas id="bitmap"></canvas>
 <img id="image">
 <script>
@@ -17,7 +17,7 @@ encoder.setSize(150,150);
 
 console.log(encoder.start());
 
-context.fillStyle = "rgb(255,255,255)";  
+context.fillStyle = "rgb(255,255,255)";
 context.fillRect(0,0,canvas.width, canvas.height); //GIF can't do transparent so do white
 
 var now = new Date();
@@ -32,7 +32,7 @@ document.getElementById('image').src = 'data:image/gif;base64,'+encode64(encoder
 function clock(now){
   var ctx = context;
   ctx.save();
-  context.fillStyle = "rgb(255,255,255)";  
+  context.fillStyle = "rgb(255,255,255)";
   context.fillRect(0,0,150, 150); //GIF can't do transparent so do white
 
   ctx.translate(75,75);
@@ -67,7 +67,7 @@ function clock(now){
     ctx.rotate(Math.PI/30);
   }
   ctx.restore();
-  
+
   var sec = now.getSeconds();
   var min = now.getMinutes();
   var hr  = now.getHours();
@@ -94,7 +94,7 @@ function clock(now){
   ctx.lineTo(112,0);
   ctx.stroke();
   ctx.restore();
-  
+
   // Write seconds
   ctx.save();
   ctx.rotate(sec * Math.PI/30);
@@ -123,7 +123,7 @@ function clock(now){
   ctx.stroke();
 
   ctx.restore();
-  
+
   encoder.addFrame(ctx);
 }
 </script>

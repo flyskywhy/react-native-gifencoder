@@ -42,9 +42,9 @@
       var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       encoder.addFrame(imageData);
 
-      //
-      encoder.finish();
-      document.getElementById('image').src = 'data:image/gif;base64,'+encode64(encoder.stream().getData())
+      // Encode the frames
+      var gif = encoder.encode();
+      document.getElementById('image').src = 'data:image/gif;base64,' + encode64(gif);
 
 
     /*

@@ -1,10 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <script src="../lib/b64.js"></script>
-    <script src="../lib/LZWEncoder.js"></script>
-    <script src="../lib/NeuQuant.js"></script>
-    <script src="../lib/GIFEncoder.js"></script>
+    <script src="../dist/jsgif.min.js"></script>
   </head>
   <body>
     <canvas id="bitmap"></canvas>
@@ -24,8 +21,9 @@
       var encoder = new GIFEncoder();
 
       // Configure
-      encoder.setRepeat(0); //auto-loop
-      encoder.setDelay(500);
+      encoder.size = [canvas.width, canvas.height];
+      encoder.loopCount = 0;
+      encoder.delayTime = 50;
 
       // Draw on canvas
       context.fillStyle = "rgb(200,0,0)";
@@ -44,7 +42,7 @@
 
       // Encode the frames
       var gif = encoder.encode();
-      document.getElementById('image').src = 'data:image/gif;base64,' + encode64(gif);
+      document.getElementById('image').src = 'data:image/gif;base64,' + btoa(gif);
 
 
     /*

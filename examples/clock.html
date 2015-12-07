@@ -1,7 +1,4 @@
-<script src="./b64.js"></script>
-<script src="../lib/LZWEncoder.js"></script>
-<script src="../lib/NeuQuant.js"></script>
-<script src="../lib/GIFEncoder.js"></script>
+<script src="../dist/jsgif.min.js"></script>
 <canvas id="bitmap"></canvas>
 <img id="image">
 <script>
@@ -9,11 +6,12 @@ var canvas = document.getElementById('bitmap');
 var context = canvas.getContext('2d');
 
 var encoder = new GIFEncoder();
-encoder.setRepeat(0); //auto-loop
-encoder.setDelay(1000);
+encoder.loopCount = 0; //auto-loop
+//encoder.delayTime = 1000;
+encoder.fps = 1;
 canvas.width = 150;
 canvas.height = 150;
-encoder.setSize(150,150);
+encoder.size = [150, 150];
 
 context.fillStyle = "rgb(255,255,255)";
 context.fillRect(0,0,canvas.width, canvas.height); //GIF can't do transparent so do white
@@ -26,7 +24,7 @@ for(var i = 0; i < 10; i++){
 
 // Encode the frames
 var gif = encoder.encode();
-document.getElementById('image').src = 'data:image/gif;base64,' + encode64(gif);
+document.getElementById('image').src = 'data:image/gif;base64,' + btoa(gif);
 
 //based on: https://developer.mozilla.org/en/Canvas_tutorial/Basic_animations#An_animation_example_2
 function clock(now){

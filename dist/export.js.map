@@ -1,1 +1,0 @@
-{"version":3,"sources":["export.js"],"names":[],"mappings":";;;;;;;;AAEA,MAAM,CAAC,UAAU,uBAAa,CAAC","file":"export.js","sourcesContent":["import GIFEncoder from './GIFEncoder.js';\r\n\r\nwindow.GIFEncoder = GIFEncoder;\r\n"],"sourceRoot":"/source/"}

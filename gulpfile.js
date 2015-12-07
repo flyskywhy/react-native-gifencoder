@@ -1,39 +1,66 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-//const watch = require('gulp-watch');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const gutil = require('gulp-util');
+const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
-const Builder = require('systemjs-builder');
+const browserify = require('browserify');
+const babelify = require('babelify');
 const fse = require('fs-extra');
+const babel = require('gulp-babel');
 
-function cleanTask(callback) {
-  fse.emptyDir('dist', callback);
+function cleanCommonJs(callback) {
+  fse.emptyDir('./dist/commonjs/', callback);
 }
 
-function babelTask() {
-  return gulp.src('lib/**/*.js')
+function cleanBundle(callback) {
+  fse.emptyDir('./dist/bundle/', callback);
+}
+
+function buildCommonJs() {
+  return gulp.src([
+      './src/**/*.js',
+      '!./src/bundle.js',
+    ])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('./dist/commonjs/'));
 }
 
-function systemjsTask() {
-  const builder = new Builder('dist/');
-
-  return builder.buildStatic('export.js', 'dist/jsgif.min.js', {
-    'minify': true,
-    'sourceMaps': true,
+function buildBundle() {
+  const b = browserify({
+    'entries': './src/bundle.js',
+    'debug': true,
+    'transform': [babelify]
   });
+
+  return b.bundle()
+    .pipe(source('GifEncoder.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        .pipe(uglify())
+        .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./dist/bundle/'));
 }
 
-const build = gulp.series(
-  cleanTask,
-  babelTask,
-  systemjsTask
+const buildCommonJsTask = gulp.series(
+  cleanCommonJs,
+  buildCommonJs
 );
 
-gulp.task('build', build);
+const buildBundleTask = gulp.series(
+  cleanBundle,
+  buildBundle
+);
+
+gulp.task('build', gulp.parallel(
+  buildCommonJsTask,
+  buildBundleTask
+));
 
 gulp.task('watch', () => {
-  gulp.watch('lib/**/*.js', build);
+  gulp.watch('./src/**/*.js', buildBundleTask);
 });

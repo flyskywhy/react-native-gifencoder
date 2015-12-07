@@ -7,6 +7,7 @@
  * @version 0.1 AS3 implementation
  */
 
+import 'babel-polyfill';
 import GifWriter from './GifWriter.js';
 import ImageEncoder from './ImageEncoder.js';
 
@@ -220,7 +221,7 @@ export default class GifEncoder {
 		this.images.push([rgbaPixels, left, top, width, height, disposalMethod, delayTime, transparentColor]);
 	}
 
-	encode() {
+	async encode() {
 		if (!this.images.length) {
 			throw new Error('No images added. Use addImage() to add images.');
 		}

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <script src="../dist/jsgif.min.js"></script>
+    <script src="../dist/bundle/GifEncoder.js"></script>
   </head>
   <body>
     <canvas id="bitmap"></canvas>
@@ -41,8 +41,9 @@
       encoder.addImage(imageData);
 
       // Encode the frames
-      var gif = encoder.encode();
-      document.getElementById('image').src = 'data:image/gif;base64,' + btoa(gif);
+      encoder.encode().then(function (gifBytes) {
+        document.getElementById('image').src = 'data:image/gif;base64,' + btoa(gifBytes);
+      });
 
 
     /*

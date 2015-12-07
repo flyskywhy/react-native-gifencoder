@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+require('babel-polyfill');
+
 var _GifWriter = require('./GifWriter.js');
 
 var _GifWriter2 = _interopRequireDefault(_GifWriter);
@@ -25,11 +27,13 @@ var _ImageEncoder2 = _interopRequireDefault(_ImageEncoder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var GIFEncoder = (function () {
-	function GIFEncoder() {
-		_classCallCheck(this, GIFEncoder);
+var GifEncoder = (function () {
+	function GifEncoder() {
+		_classCallCheck(this, GifEncoder);
 
 		this.images = [];
 
@@ -50,7 +54,7 @@ var GIFEncoder = (function () {
   * NOT MILLISECONDS BUT 100ths of a second!!!!!
   */
 
-	_createClass(GIFEncoder, [{
+	_createClass(GifEncoder, [{
 		key: 'addImage',
 
 		/**
@@ -78,91 +82,129 @@ var GIFEncoder = (function () {
 		}
 	}, {
 		key: 'encode',
-		value: function encode() {
-			if (!this.images.length) {
-				throw new Error('No images added. Use addImage() to add images.');
-			}
+		value: (function () {
+			var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+				var gifWriter, imageEncoder, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, image, _image, rgbaPixels, _image$, left, _image$2, top, _image$3, width, _image$4, height, _image$5, disposalMethod, _image$6, delayTime, _image$7, transparentColor, _imageEncoder$encodeI, _imageEncoder$encodeI2, localColorTable, transparentColorIndex, tableBasedImageData;
 
-			var gifWriter = new _GifWriter2.default();
+				return regeneratorRuntime.wrap(function _callee$(_context) {
+					while (1) {
+						switch (_context.prev = _context.next) {
+							case 0:
+								if (this.images.length) {
+									_context.next = 2;
+									break;
+								}
 
-			gifWriter.writeHeader();
+								throw new Error('No images added. Use addImage() to add images.');
 
-			gifWriter.writeLogicalScreenDescriptor(this.width, this.height, 0, 7, 0, 0, 0, 0);
+							case 2:
+								gifWriter = new _GifWriter2.default();
 
-			if (this.comment) {
-				gifWriter.writeCommentExtension(this.comment);
-			}
+								gifWriter.writeHeader();
 
-			if (this.loopCount !== undefined) {
-				gifWriter.writeNetscapeLoopingApplicationExtension(this.loopCount);
-			}
+								gifWriter.writeLogicalScreenDescriptor(this.width, this.height, 0, 7, 0, 0, 0, 0);
 
-			// Initialize the ImageEncoder which will take care of generating
-			// Local Color Table and LZW-encoded Table Based Image Data
-			var imageEncoder = new _ImageEncoder2.default();
+								if (this.comment) {
+									gifWriter.writeCommentExtension(this.comment);
+								}
 
-			// Loop images
-			var _iteratorNormalCompletion = true;
-			var _didIteratorError = false;
-			var _iteratorError = undefined;
+								if (this.loopCount !== undefined) {
+									gifWriter.writeNetscapeLoopingApplicationExtension(this.loopCount);
+								}
 
-			try {
-				for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-					var image = _step.value;
+								// Initialize the ImageEncoder which will take care of generating
+								// Local Color Table and LZW-encoded Table Based Image Data
+								imageEncoder = new _ImageEncoder2.default();
 
-					var _image = _slicedToArray(image, 8);
+								// Loop images
 
-					var rgbaPixels = _image[0];
-					var _image$ = _image[1];
-					var left = _image$ === undefined ? 0 : _image$;
-					var _image$2 = _image[2];
-					var top = _image$2 === undefined ? 0 : _image$2;
-					var _image$3 = _image[3];
-					var width = _image$3 === undefined ? this.width : _image$3;
-					var _image$4 = _image[4];
-					var height = _image$4 === undefined ? this.height : _image$4;
-					var _image$5 = _image[5];
-					var disposalMethod = _image$5 === undefined ? this.disposalMethod : _image$5;
-					var _image$6 = _image[6];
-					var delayTime = _image$6 === undefined ? this.delayTime : _image$6;
-					var _image$7 = _image[7];
-					var transparentColor = _image$7 === undefined ? this.transparentColor : _image$7;
+								_iteratorNormalCompletion = true;
+								_didIteratorError = false;
+								_iteratorError = undefined;
+								_context.prev = 11;
+								for (_iterator = this.images[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+									image = _step.value;
+									_image = _slicedToArray(image, 8);
+									rgbaPixels = _image[0];
+									_image$ = _image[1];
+									left = _image$ === undefined ? 0 : _image$;
+									_image$2 = _image[2];
+									top = _image$2 === undefined ? 0 : _image$2;
+									_image$3 = _image[3];
+									width = _image$3 === undefined ? this.width : _image$3;
+									_image$4 = _image[4];
+									height = _image$4 === undefined ? this.height : _image$4;
+									_image$5 = _image[5];
+									disposalMethod = _image$5 === undefined ? this.disposalMethod : _image$5;
+									_image$6 = _image[6];
+									delayTime = _image$6 === undefined ? this.delayTime : _image$6;
+									_image$7 = _image[7];
+									transparentColor = _image$7 === undefined ? this.transparentColor : _image$7;
 
-					// Encode the image
+									// Encode the image
 
-					var _imageEncoder$encodeI = imageEncoder.encodeImage(rgbaPixels, this.samplingFactor, width, height, transparentColor);
+									_imageEncoder$encodeI = imageEncoder.encodeImage(rgbaPixels, this.samplingFactor, width, height, transparentColor);
+									_imageEncoder$encodeI2 = _slicedToArray(_imageEncoder$encodeI, 3);
+									localColorTable = _imageEncoder$encodeI2[0];
+									transparentColorIndex = _imageEncoder$encodeI2[1];
+									tableBasedImageData = _imageEncoder$encodeI2[2];
 
-					var _imageEncoder$encodeI2 = _slicedToArray(_imageEncoder$encodeI, 3);
+									// Write the image
 
-					var localColorTable = _imageEncoder$encodeI2[0];
-					var transparentColorIndex = _imageEncoder$encodeI2[1];
-					var tableBasedImageData = _imageEncoder$encodeI2[2];
+									gifWriter.writeImage(left, top, width, height, disposalMethod, delayTime, transparentColorIndex, localColorTable, tableBasedImageData);
+								}
 
-					// Write the image
+								// Write Trailer
+								_context.next = 19;
+								break;
 
-					gifWriter.writeImage(left, top, width, height, disposalMethod, delayTime, transparentColorIndex, localColorTable, tableBasedImageData);
-				}
+							case 15:
+								_context.prev = 15;
+								_context.t0 = _context['catch'](11);
+								_didIteratorError = true;
+								_iteratorError = _context.t0;
 
-				// Write Trailer
-			} catch (err) {
-				_didIteratorError = true;
-				_iteratorError = err;
-			} finally {
-				try {
-					if (!_iteratorNormalCompletion && _iterator.return) {
-						_iterator.return();
+							case 19:
+								_context.prev = 19;
+								_context.prev = 20;
+
+								if (!_iteratorNormalCompletion && _iterator.return) {
+									_iterator.return();
+								}
+
+							case 22:
+								_context.prev = 22;
+
+								if (!_didIteratorError) {
+									_context.next = 25;
+									break;
+								}
+
+								throw _iteratorError;
+
+							case 25:
+								return _context.finish(22);
+
+							case 26:
+								return _context.finish(19);
+
+							case 27:
+								gifWriter.writeTrailer();
+
+								return _context.abrupt('return', gifWriter.getData());
+
+							case 29:
+							case 'end':
+								return _context.stop();
+						}
 					}
-				} finally {
-					if (_didIteratorError) {
-						throw _iteratorError;
-					}
-				}
-			}
+				}, _callee, this, [[11, 15, 19, 27], [20,, 22, 26]]);
+			}));
 
-			gifWriter.writeTrailer();
-
-			return gifWriter.getData();
-		}
+			return function encode() {
+				return ref.apply(this, arguments);
+			};
+		})()
 	}, {
 		key: 'delayTime',
 		get: function get() {
@@ -360,8 +402,8 @@ var GIFEncoder = (function () {
 		}
 	}]);
 
-	return GIFEncoder;
+	return GifEncoder;
 })();
 
-exports.default = GIFEncoder;
-//# sourceMappingURL=GIFEncoder.js.map
+exports.default = GifEncoder;
+//# sourceMappingURL=GifEncoder.js.map

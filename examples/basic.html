@@ -32,7 +32,7 @@
       context.fillRect(10, 10, 75, 50);
 
       // Add first frame passing context
-      encoder.addFrame(context);
+      encoder.addImage(context);
 
       // Draw on canvas
       context.fillStyle = "rgb(20,0,200)";
@@ -40,7 +40,7 @@
 
       // Add second frame passing image data
       var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-      encoder.addFrame(imageData);
+      encoder.addImage(imageData);
 
       // Encode the frames
       var gif = encoder.encode();
@@ -64,7 +64,7 @@
       encoder.setProperties(true, true); //started, firstFrame
     }
     encoder.setSize(height, width);
-    encoder.addFrame(imageData, true);
+    encoder.addImage(imageData, true);
     if(frame_length == frame_index){
       encoder.finish()
     }

@@ -290,6 +290,6 @@ export default class GifEncoder {
 		// Write Trailer
 		gifWriter.writeTrailer();
 
-		return gifWriter.getData();
+		return gifWriter.bytes;
 	}
 }

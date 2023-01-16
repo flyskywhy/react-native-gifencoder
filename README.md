@@ -1,9 +1,9 @@
 # react-native-gifencoder
 
-[![npm version](http://img.shields.io/npm/v/@flyskywhy/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-gifencoder "View this project on npm")
-[![npm downloads](http://img.shields.io/npm/dm/@flyskywhy/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-gifencoder "View this project on npm")
-[![npm licence](http://img.shields.io/npm/l/@flyskywhy/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-gifencoder "View this project on npm")
-[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android%20%7C%20web-989898.svg?style=flat-square)](https://npmjs.org/package/@flyskywhy/react-native-gifencoder "View this project on npm")
+[![npm version](http://img.shields.io/npm/v/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/react-native-gifencoder "View this project on npm")
+[![npm downloads](http://img.shields.io/npm/dm/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/react-native-gifencoder "View this project on npm")
+[![npm licence](http://img.shields.io/npm/l/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/react-native-gifencoder "View this project on npm")
+[![Platform](https://img.shields.io/badge/platform-ios%20%7C%20android%20%7C%20web-989898.svg?style=flat-square)](https://npmjs.org/package/react-native-gifencoder "View this project on npm")
 
 Pure JavaScript HTML5 `<canvas>` or ImageData to (Animated) GIF Conversion for React Native.
 
@@ -32,7 +32,7 @@ You first need to include the JS files.
 If you want to render the gif through `<Image>` or try to save to disk or send to server or anything that requires
 conversion into a non-binary string form, you can use `encode64` too.
 
-Simple enough right? Now to convert stuff to GIF, you need to have a working `@flyskywhy/react-native-gcanvas` (or `<canvas>` on Web) or at least some imageData-esque array.
+Simple enough right? Now to convert stuff to GIF, you need to have a working [@flyskywhy/react-native-gcanvas](https://github.com/flyskywhy/react-native-gcanvas) (or `<canvas>` on Web) or at least some imageData-esque array.
 
 We need to init the GIFEncoder.
 

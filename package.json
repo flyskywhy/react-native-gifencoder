@@ -1,0 +1,32 @@
+{
+  "name": "react-native-gifencoder",
+  "version": "1.0.0",
+  "description": "Pure JavaScript HTML5 <canvas> or ImageData to (Animated) GIF Conversion for React Native",
+  "main": "index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Kwok <antimatter15@gmail.com> (http://antimatter15.com)",
+  "contributors": [
+    {
+      "name": "Li Zheng",
+      "email": "flyskywhy@gmail.com",
+      "url": "https://github.com/flyskywhy"
+    }
+  ],
+  "keywords": [
+    "canvas",
+    "gif-encoder",
+    "gifencoder",
+    "imagedata",
+    "react-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyskywhy/react-native-gifencoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flyskywhy/react-native-gifencoder/issues"
+  },
+  "homepage": "https://github.com/flyskywhy/react-native-gifencoder#readme"
+}

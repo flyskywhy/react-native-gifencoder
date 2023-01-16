@@ -6,8 +6,10 @@
  * @author Kevin Kwok (JavaScript version - https://github.com/antimatter15/jsgif)
  * @version 0.1 AS3 implementation
  */
+import NeuQuant from './NeuQuant';
+import LZWEncoder from './LZWEncoder';
 
-GIFEncoder = function() {
+const GIFEncoder = function() {
 
 	for (var i = 0, chr = {}; i < 256; i++)
 		chr[i] = String.fromCharCode(i);
@@ -519,3 +521,5 @@ GIFEncoder = function() {
 	return exports;
 
 };
+
+export default GIFEncoder;

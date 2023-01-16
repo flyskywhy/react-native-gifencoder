@@ -21,16 +21,12 @@ Since it pretty much *is* GIFEncoder, you could consult the [as3gif how-to page]
 
 But there are some differences so I'll cover it here anyway.
 
-You first need to include the JS files. It's probably best if you include it in this order, but it shouldn't matter too much.
+You first need to include the JS files.
 
-    <script type="text/javascript" src="LZWEncoder.js"></script>
-    <script type="text/javascript" src="NeuQuant.js"></script>
-    <script type="text/javascript" src="GIFEncoder.js"></script>
+    import {GIFEncoder, encode64} from 'react-native-gifencoder';
 
-If you want to render the gif through an inline `<img>` tag or try to save to disk or send to server or anything that requires
-conversion into a non-binary string form, you should probably include `b64.js` too.
-
-    <script type="text/javascript" src="b64.js"></script>
+If you want to render the gif through `<Image>` or try to save to disk or send to server or anything that requires
+conversion into a non-binary string form, you can use `encode64` too.
 
 Simple enough right? Now to convert stuff to GIF, you need to have a working <canvas> or at least some imageData-esque array.
 

@@ -16,3 +16,5 @@ function encode64(input) {
 	}
 	return output;
 }
+
+export default encode64;

@@ -1,6 +1,6 @@
 {
   "name": "react-native-gifencoder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pure JavaScript HTML5 <canvas> or ImageData to (Animated) GIF Conversion for React Native",
   "main": "index",
   "scripts": {

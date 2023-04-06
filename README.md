@@ -139,7 +139,7 @@ The process isn't really the fastest thing ever, so you should
 use WebWorkers for piecing together animations more than a few frames
 long.
 
-Ref to how <https://github.com/flyskywhy/PixelShapeRN/blob/master/src/workers/workerPool.js> let `generateGif.worker.js` works
+Ref to how <https://github.com/flyskywhy/PixelShapeRN/blob/v1.1.27/src/workers/workerPool.js> let `generateGif.worker.js` works
 on Android iOS with `@minar-kotonoha/react-native-threads` and on Web with `codegen.macro`.
 
 Here's some incomplete mock-JS which

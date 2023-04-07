@@ -1,3 +1,8 @@
+DEPRECATED! Please use [gifenc](https://github.com/mattdesl/gifenc) instead.
+
+Ref to how [react-native-runescape-text](https://github.com/flyskywhy/react-native-runescape-text) can [Fix when one color e.g. '#ff0000' only have 1 or 2 or 3 pixel in one frame, the generated gif pixel will be '#9f0000'; fix some frame not transparent but black; reduce gif size 10x](https://github.com/flyskywhy/react-native-runescape-text/commit/32f7b9c) by `replace react-native-gifencoder` with `gifenc`.
+
+
 # react-native-gifencoder
 
 [![npm version](http://img.shields.io/npm/v/react-native-gifencoder.svg?style=flat-square)](https://npmjs.org/package/react-native-gifencoder "View this project on npm")
